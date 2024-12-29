@@ -27,5 +27,4 @@ namespace BanZ {
 		GameObject* background = new GameObject();
 		Map* map = new Map();
 	};
-
 }
