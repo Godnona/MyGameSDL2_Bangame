@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Resource Files\assets">
+      <UniqueIdentifier>{f55dd20f-5442-4b90-ae27-48b99bba3197}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\assets\images">
+      <UniqueIdentifier>{9f105a41-c896-4acc-8414-c333731e75d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\assets\images\map">
+      <UniqueIdentifier>{c3d2d33f-1f47-4678-9363-7a1931b2dbee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\assets\images\player">
+      <UniqueIdentifier>{59ae1d7c-c723-413a-aae7-41528b8856fd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Map.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\LabGameLib\Lib\Include\BanGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\LabGameLib\Lib\Include\DataFormat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\images\map\bg1.png">
+      <Filter>Resource Files\assets\images\map</Filter>
+    </Image>
+    <Image Include="assets\images\map\ground1.png">
+      <Filter>Resource Files\assets\images\map</Filter>
+    </Image>
+    <Image Include="assets\images\map\ground2.png">
+      <Filter>Resource Files\assets\images\map</Filter>
+    </Image>
+    <Image Include="assets\images\map\Tileset1.png">
+      <Filter>Resource Files\assets\images\map</Filter>
+    </Image>
+    <Image Include="assets\images\map\Tileset2.png">
+      <Filter>Resource Files\assets\images\map</Filter>
+    </Image>
+    <Image Include="assets\images\player\DarkSamurai_Idle_L.png">
+      <Filter>Resource Files\assets\images\player</Filter>
+    </Image>
+    <Image Include="assets\images\player\DarkSamurai_Idle_R.png">
+      <Filter>Resource Files\assets\images\player</Filter>
+    </Image>
+    <Image Include="assets\images\player\DarkSamurai_L.png">
+      <Filter>Resource Files\assets\images\player</Filter>
+    </Image>
+    <Image Include="assets\images\player\DarkSamurai_R.png">
+      <Filter>Resource Files\assets\images\player</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="assets\images\map\mapFormat.txt">
+      <Filter>Resource Files\assets\images\map</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
