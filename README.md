@@ -1,1 +1,1 @@
-add all file in LibDll in x64 when build and run
+add all files in Lib Dll to x64 on build and run
