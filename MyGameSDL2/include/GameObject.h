@@ -12,7 +12,6 @@ namespace BanZ {
 	public:
 		GameObject();
 		~GameObject() = default;
-	
 
 		virtual void LoadImg(BanGame* banGame, const std::string& imgPath);
 		void RenderImg(BanGame* banGame);

@@ -7,11 +7,11 @@ void BanZ::GameManager::Init()
 
 
 	// load background
-	
+	background = new GameObject();
 	background->LoadImg(banGame, PATH_BACKGROUND);
 
 	// load map
-	
+	map = new Map();
 	map->InitFormat(PATH_MAP_FORMAT);
 	map->InitTile(banGame);
 	

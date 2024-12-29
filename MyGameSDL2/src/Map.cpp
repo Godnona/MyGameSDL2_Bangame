@@ -21,7 +21,7 @@ void BanZ::Map::InitFormat(const std::string& filePath)
 
 	dataMap.end_x = 0;
 	dataMap.end_y = 0;
-	for (int i = 0; i < MAX_MAP_Y; i++)
+	for (int i = MAX_MAP_Y - 1; i >= 0; i--)
 	{
 		for (int j = 0; j < MAX_MAP_X; j++)
 		{
@@ -48,6 +48,7 @@ void BanZ::Map::InitFormat(const std::string& filePath)
 
 	dataMap.mapFormatPath = filePath;
 	fclose(file);
+	delete file;
 }
 
 void BanZ::Map::InitTile(BanGame* banGame)
@@ -68,6 +69,7 @@ void BanZ::Map::InitTile(BanGame* banGame)
 		objMap[i]->LoadImg(banGame, filePath);
 		
 	}
+	delete file;
 }
 
 void BanZ::Map::Update(float deltaTime, BanGame* banGame)
