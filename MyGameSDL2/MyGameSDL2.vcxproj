@@ -134,9 +134,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\Data.cpp" />
     <ClCompile Include="src\GameManager.cpp" />
     <ClCompile Include="src\GameObject.cpp" />
     <ClCompile Include="src\Map.cpp" />
+    <ClCompile Include="src\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\LabGameLib\Lib\Include\BanGame.h" />
@@ -145,6 +147,7 @@
     <ClInclude Include="include\GameManager.h" />
     <ClInclude Include="include\GameObject.h" />
     <ClInclude Include="include\Map.h" />
+    <ClInclude Include="include\Player.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\images\map\bg1.png" />

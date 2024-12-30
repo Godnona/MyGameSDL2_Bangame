@@ -7,6 +7,7 @@
 #include "BanGame.h"
 #include <iostream>
 #include <string>
+#include <vector>
 #include <fstream>
 #include <sstream>
 
@@ -22,12 +23,24 @@ namespace BanZ
 	const int BLOCK_SIZE = 32;
 	const int MAX_MAP_FORMAT = 12;
 
-#define PATH_MAP "assets/images/map/Tileset%d.png"
+	// ============== Num Animation ==============
+	enum PLAYERSTATE
+	{
+		IDLE_LEFT,
+		IDLE_RIGHT,
+		RUN_LEFT,
+		RUN_RIGHT
+	};
 
 	// ============== PATH ==============
-	const std::string PATH_BACKGROUND = "assets/images/map/bg1.png";
-	const std::string PATH_MAP_FORMAT = "assets/images/map/mapFormat.txt";
-	#define PATH_MAP_IMG "assets/images/map/Tileset%d.png"
+	extern std::string PATH_BACKGROUND;
+	extern std::string PATH_MAP_FORMAT;
+	extern const char* PATH_MAP_IMG;
+
+	// player run left
+	extern std::vector<std::string> PATH_PLAYER_RUN_LEFT;
+	// player run right
+	extern std::vector<std::string> PATH_PLAYER_RUN_RIGHT;
 }
 
 #endif // DATA_H

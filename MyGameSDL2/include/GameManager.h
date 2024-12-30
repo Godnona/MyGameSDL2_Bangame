@@ -1,8 +1,9 @@
 #pragma once  
 #include "BanGame.h"  
 
-#include "iostream"  
-#include "cstring"  
+#include <iostream> 
+#include <string>
+#include <sstream>
 
 #include "Data.h"  
 #include "GameObject.h"  
@@ -24,6 +25,12 @@ namespace BanZ {
 
 	private:  
 		GameObject* background;  
-		Map* map;  
+		Map* map;
+
+		pAnimation runLeftAnim;
+		pAnimation runRightAnim;
+
+		pAnimator manageAnim;
+		
 	};  
 }
