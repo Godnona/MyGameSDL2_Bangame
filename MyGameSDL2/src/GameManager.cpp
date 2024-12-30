@@ -14,7 +14,7 @@ void BanZ::GameManager::Init()
 	//map->InitFormat(PATH_MAP_FORMAT);
 	//map->InitTile(banGame);
 
-	
+	// init anim
 	manageAnim = banGame->CreateAnimator();
 	runLeftAnim = banGame->CreateAnimation("RunLeft", PATH_PLAYER_RUN_LEFT);
 	banGame->AddAnimationToAnimator(manageAnim, runLeftAnim);
@@ -32,12 +32,13 @@ void BanZ::GameManager::Render() const
 	// render map
 	//map->Render(banGame);
 
+	// render anim
 	banGame->PlayAnimation(manageAnim, { WIDTH / 2, HEIGHT / 2 }, BLOCK_SIZE, 0, {1.0f, 1.0f, 0.0f, 1.0f});
 
-	
 }
 
 void BanZ::GameManager::Update(float deltaTime, BanGame* banGame)
 {
+	// update anim
 	banGame->UpdateAnimation(manageAnim, deltaTime);
 }
