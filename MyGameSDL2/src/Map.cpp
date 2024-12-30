@@ -21,7 +21,7 @@ void BanZ::Map::InitFormat(const std::string& filePath)
 
 	dataMap.end_x = 0;
 	dataMap.end_y = 0;
-	for (int i = MAX_MAP_Y - 1; i >= 0; i--)
+	for (int i = MAX_MAP_Y - 1; i > 0; i--)
 	{
 		for (int j = 0; j < MAX_MAP_X; j++)
 		{
@@ -84,7 +84,7 @@ void BanZ::Map::Render(BanGame* banGame)
 
 	// Get pos
 	x1 = (dataMap.start_x % BLOCK_SIZE) * -1;
-	x2 = x1 + WIDTH + ((x1 == 0) ? 0 : BLOCK_SIZE);
+	x2 = x1 + WIDTH + BLOCK_SIZE;
 
 	y1 = (dataMap.start_y % BLOCK_SIZE) * -1;
 	y2 = y1 + HEIGHT + (y1 == 0 ? 0 : BLOCK_SIZE);
