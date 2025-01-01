@@ -16,5 +16,8 @@ namespace BanZ
 	// ============== PLAYER ==============
 	int WIDTH_FRAME = 32;
 	int HEIGHT_FRAME = 32;
+	float SPEED_GRAVITY = 0.8;
+	float MAX_GRAVITY = 9.8;
+	float SPEED_PLAYER = 6;
 
 }

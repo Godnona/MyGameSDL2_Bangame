@@ -3,7 +3,7 @@
 
 Player::Player()
 {
-	width_frame = 0; width_frame = 0;
+	width_frame = 0; height_frame = 0;
 
 	x_pos = 32; y_pos = HEIGHT - 64;
 
@@ -62,13 +62,105 @@ void Player::Render(BanGame* banGame)
 	pos.y = y_pos;
 
 	VECTOR3 positionGlobal = VECTOR3(pos.x, pos.y, 0.0f);
-	VECTOR2 sizeGlobal = VECTOR2(BLOCK_SIZE * 3, BLOCK_SIZE * 3);
+	VECTOR2 sizeGlobal = VECTOR2(BLOCK_SIZE, BLOCK_SIZE);
 
 	banGame->DrawPartialTexture(sprite,
 								positionGlobal, posFrame[frame],
 								sizeFrame[frame], sizeGlobal,
 								{0, 0, 0});
 
+}
+
+void Player::Move(MapStruct& map)
+{
+	x_speed = 0;
+	y_speed += -SPEED_GRAVITY;
+	if (y_speed >= -SPEED_GRAVITY)
+		y_speed = -MAX_GRAVITY;
+
+	if (input.left == 1)
+		x_speed += -SPEED_PLAYER;
+	else if (input.right == 1)
+		x_speed += SPEED_PLAYER;
+
+	CheckCollider(map);
+
+}
+
+void Player::CheckCollider(MapStruct& map)
+{
+	int x1 = 0, y1 = 0;
+	int x2 = 0, y2 = 0;
+
+	// Check horizontal
+	int height_min = height_frame < BLOCK_SIZE ? height_frame : BLOCK_SIZE;
+	x1 = (x_pos + x_speed) / BLOCK_SIZE;
+	x2 = (x_pos + x_speed + width_frame - 1) / BLOCK_SIZE;
+
+	y1 = y_pos / BLOCK_SIZE;
+	y2 = (y_pos + height_min - 1) / BLOCK_SIZE;
+
+	if (x1 >= 0 && x2 < MAX_MAP_X && y1 >= 0 && y2 < MAX_MAP_Y)
+	{
+		if (x_speed > 0)
+		{
+			if (map.status[y1][x2] > 0 || map.status[y2][x2] > 0)
+			{
+				x_pos = x2 * BLOCK_SIZE;
+				x_pos -= width_frame + 1;
+				x_speed = 0;
+			}
+		}
+		else if (x_speed < 0)
+		{
+			if (map.status[y1][x1] != 0 || map.status[y2][x1] != 0)
+			{
+				x_pos = (x1 + 1) * BLOCK_SIZE;
+				x_speed = 0;
+			}
+		}
+	}
+
+	// Check Vertical
+	int width_min = width_frame < BLOCK_SIZE ? width_frame : BLOCK_SIZE;
+	x1 = x_pos / BLOCK_SIZE;
+	x2 = (x_pos + width_min) / BLOCK_SIZE;
+
+	y1 = (y_pos + y_speed) / BLOCK_SIZE;
+	y2 = (y_pos + y_speed + height_frame - 1) / BLOCK_SIZE;
+
+	if (x1 >= 0 && x2 < MAX_MAP_X && y1 >= 0 && y2 < MAX_MAP_Y)
+	{
+		if (y_speed > 0)
+		{
+			if (map.status[y2][x1] > 0 || map.status[y2][x2] > 0)
+			{
+				y_pos = y2 * BLOCK_SIZE;
+				y_pos -= height_frame + 1;
+				isGround = true;
+				y_speed = 0;
+			}
+		}
+		else if (y_speed < 0)
+		{
+			if (map.status[y1][x1] > 0 || map.status[y1][x2] > 0)
+			{
+				y_pos = (y1 + 1) * BLOCK_SIZE;
+				y_speed = 0;
+			}
+		}
+	}
+
+	// if we don't collide with obejct, we will move
+	x_pos += x_speed;
+	y_pos += y_speed;
+
+	if (x_pos < 0) x_pos = 0;
+	else if (x_pos + width_frame > map.end_x) x_pos = map.end_x - width_frame;
+}
+
+void Player::MoveCamera(MapStruct& map)
+{
 }
 
 void Player::HandleInput(BanGame* banGame)

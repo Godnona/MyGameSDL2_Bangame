@@ -112,3 +112,13 @@ void BanZ::Map::Render(BanGame* banGame)
 	}
 
 }
+
+void BanZ::Map::SetMap(MapStruct& mapStruct)
+{
+	this->dataMap = mapStruct;
+}
+
+MapStruct BanZ::Map::GetMap()
+{
+	return dataMap;
+}

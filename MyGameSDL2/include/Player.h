@@ -5,6 +5,7 @@ using namespace std;
 
 #include "GameObject.h"
 #include "Data.h"
+#include "Map.h"
 
 
 
@@ -19,6 +20,10 @@ public:
 	
 	void HandleInput(BanGame* banGame);
 	void Render(BanGame* banGame);
+
+	void Move(MapStruct& map);
+	void CheckCollider(MapStruct& map);
+	void MoveCamera(MapStruct& map);
 
 	enum RunType
 	{
@@ -39,6 +44,8 @@ private:
 	int frame;
 	int status;
 	bool isRight;
+
+	bool isGround;
 
 };
 

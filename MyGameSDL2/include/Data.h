@@ -10,6 +10,7 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include <cmath>
 
 namespace BanZ
 {
@@ -45,6 +46,9 @@ namespace BanZ
 	// ============== PLAYER ==============
 	extern int WIDTH_FRAME;
 	extern int HEIGHT_FRAME;
+	extern float MAX_GRAVITY;
+	extern float SPEED_GRAVITY;
+	extern float SPEED_PLAYER;
 
 
 	// ============== Input ==============

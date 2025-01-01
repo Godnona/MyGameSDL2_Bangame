@@ -27,6 +27,7 @@ namespace BanZ {
 	private:  
 		GameObject* background;  
 		Map* map;
+		MapStruct map_data;
 
 		Player* player;
 		

@@ -12,11 +12,11 @@ void BanZ::GameManager::Init()
 	background->LoadImg(banGame, PATH_BACKGROUND);
 
 	// load map
-	//map = new Map();
-	//map->InitFormat(PATH_MAP_FORMAT);
-	//map->InitTile(banGame);
+	map = new Map();
+	map->InitFormat(PATH_MAP_FORMAT);
+	map->InitTile(banGame);
 
-	// player
+	// load player
 	player = new Player();
 	
 	player->LoadImg(banGame, PATH_PLAYER_RUN_RIGHT);
@@ -32,17 +32,19 @@ void BanZ::GameManager::Render() const
 	background->RenderImg(banGame, { position.x / 2, position.y / 2 }, { WIDTH, HEIGHT });
 	
 	// render map
-	//map->Render(banGame);
+	map->Render(banGame);
 
+	// render player
 	player->Render(banGame);
 
 }
 
 void BanZ::GameManager::Update(float deltaTime, BanGame* banGame)
 {
-	/*if (banGame->GetPress(KeyBoard::Keys::W))
-		position += VECTOR2(0, 1);*/
 
 	player->HandleInput(banGame);
+
+	map_data = map->GetMap();
+	player->Move(map_data);
 
 }
