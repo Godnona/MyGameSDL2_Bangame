@@ -15,6 +15,8 @@ Player::Player()
 	isRight = true;
 
 	map_x = 0; map_y = 0;
+
+	comeback_time = 0;
 }
 
 Player::~Player()
@@ -60,45 +62,69 @@ void Player::Render(BanGame* banGame)
 
 	if (frame >= 8) frame = 0;
 
-	pos.x = x_pos - map_x;
-	pos.y = y_pos - map_y;
+	if (comeback_time == 0)
+	{
+		pos.x = x_pos - map_x;
+		pos.y = y_pos - map_y;
 
-	VECTOR3 positionGlobal = VECTOR3(pos.x, pos.y, 0.0f);
-	VECTOR2 sizeGlobal = VECTOR2(BLOCK_SIZE, BLOCK_SIZE);
+		VECTOR3 positionGlobal = VECTOR3(pos.x, pos.y, 0.0f);
+		VECTOR2 sizeGlobal = VECTOR2(BLOCK_SIZE, BLOCK_SIZE);
 
-	banGame->DrawPartialTexture(sprite,
-								positionGlobal, posFrame[frame],
-								sizeFrame[frame], sizeGlobal,
-								{0, 0, 0});
+		banGame->DrawPartialTexture(sprite,
+			positionGlobal, posFrame[frame],
+			sizeFrame[frame], sizeGlobal,
+			{ 0, 0, 0 });
+	}
+	
 
 }
 
 void Player::Move(MapStruct& map)
 {
-	x_speed = 0;
-	y_speed += -SPEED_GRAVITY;
-	if (y_speed >= -SPEED_GRAVITY)
-		y_speed = -MAX_GRAVITY;
-
-	if (input.left == 1)
-		x_speed += -SPEED_PLAYER;
-	else if (input.right == 1)
-		x_speed += SPEED_PLAYER;
-
-	if (input.jump == 1)
+	if (comeback_time == 0)
 	{
-		if (isGround == true)
+		x_speed = 0;
+		y_speed += -SPEED_GRAVITY;
+		if (y_speed >= -SPEED_GRAVITY)
+			y_speed = -MAX_GRAVITY;
+
+		if (input.left == 1)
+			x_speed += -SPEED_PLAYER;
+		else if (input.right == 1)
+			x_speed += SPEED_PLAYER;
+
+		if (input.jump == 1)
 		{
-			y_speed += JUMP_FORCE;
-			isGround = false;
+			if (isGround == true)
+			{
+				y_speed += JUMP_FORCE;
+				//isGround = false;
+			}
+
+			input.jump = 0;
 		}
 
-		input.jump = 0;
+		CheckCollider(map);
+		MoveCamera(map);
 	}
 
-	CheckCollider(map);
-	MoveCamera(map);
-
+	if (comeback_time > 0)
+	{
+		comeback_time--;
+		if (comeback_time == 0)
+		{
+			if (x_pos > BLOCK_SIZE * 4)
+			{
+				x_pos -= BLOCK_SIZE * 4;
+				map_x -= BLOCK_SIZE * 4;
+			}
+			else
+				x_pos = 0;
+			y_pos = HEIGHT + 32;
+			x_speed = 0;
+			y_speed = 0;
+		}
+	}
 }
 
 void Player::CheckCollider(MapStruct& map)
@@ -172,6 +198,11 @@ void Player::CheckCollider(MapStruct& map)
 
 	if (x_pos < 0) x_pos = 0;
 	else if (x_pos + width_frame > map.end_x) x_pos = map.end_x - width_frame;
+
+	// Reverse pos 
+	if (y_pos < map.start_y - 32)
+		comeback_time = 60;
+
 }
 
 void Player::MoveCamera(MapStruct& map)

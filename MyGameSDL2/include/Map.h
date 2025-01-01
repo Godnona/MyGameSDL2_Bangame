@@ -9,11 +9,9 @@ namespace BanZ
 {
 	typedef struct {
 
-		// Left side 
 		int start_x;
 		int start_y;
 
-		// Right side
 		int end_x;
 		int end_y;
 

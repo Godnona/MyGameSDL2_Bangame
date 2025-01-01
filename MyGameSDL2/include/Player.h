@@ -49,6 +49,7 @@ private:
 	bool isGround;
 
 	int map_x, map_y;
+	int comeback_time;
 
 };
 
