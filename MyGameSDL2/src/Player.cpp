@@ -85,6 +85,17 @@ void Player::Move(MapStruct& map)
 	else if (input.right == 1)
 		x_speed += SPEED_PLAYER;
 
+	if (input.jump == 1)
+	{
+		if (isGround == true)
+		{
+			y_speed += JUMP_FORCE;
+			isGround = false;
+		}
+
+		input.jump = 0;
+	}
+
 	CheckCollider(map);
 	MoveCamera(map);
 
@@ -140,7 +151,7 @@ void Player::CheckCollider(MapStruct& map)
 			{
 				y_pos = y2 * BLOCK_SIZE;
 				y_pos -= height_frame + 1;
-				isGround = true;
+				
 				y_speed = 0;
 			}
 		}
@@ -150,6 +161,7 @@ void Player::CheckCollider(MapStruct& map)
 			{
 				y_pos = (y1 + 1) * BLOCK_SIZE;
 				y_speed = 0;
+				isGround = true;
 			}
 		}
 	}
@@ -179,6 +191,13 @@ void Player::MoveCamera(MapStruct& map)
 	//
 }
 
+void Player::SetMapXY(const int map_x, const int map_y)
+{
+	this->map_x = map_x;
+	this->map_y = map_y;
+}
+
+
 void Player::HandleInput(BanGame* banGame)
 {
 	if (banGame->GetPress(KeyBoard::Keys::D))
@@ -188,7 +207,7 @@ void Player::HandleInput(BanGame* banGame)
 		input.left = 0;
 		input.right = 1;
 		isRight = true;
-		
+
 	}
 	else if (banGame->GetPress(KeyBoard::Keys::A))
 	{
@@ -219,11 +238,10 @@ void Player::HandleInput(BanGame* banGame)
 		status = IDLE_LEFT;
 		input.idle = 1;
 	}
-}
 
+	if (banGame->GetPress(KeyBoard::Keys::Space))
+	{
+		input.jump = 1;
 
-void Player::SetMapXY(const int map_x, const int map_y)
-{
-	this->map_x = map_x;
-	this->map_y = map_y;
+	}
 }

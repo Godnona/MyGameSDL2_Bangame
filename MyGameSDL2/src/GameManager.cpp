@@ -63,4 +63,5 @@ void BanZ::GameManager::Update(float deltaTime, BanGame* banGame)
 		if(numDelay > 0)
 			std::this_thread::sleep_for(std::chrono::milliseconds(numDelay)); // ms
 	}
+
 }

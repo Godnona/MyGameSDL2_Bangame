@@ -19,6 +19,7 @@ namespace BanZ
 	float SPEED_GRAVITY = 0.8;
 	float MAX_GRAVITY = 9.8;
 	float SPEED_PLAYER = 6;
+	float JUMP_FORCE = 20.0f;
 
 	float FPS = 45;
 

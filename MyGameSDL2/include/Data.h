@@ -51,6 +51,7 @@ namespace BanZ
 	extern float MAX_GRAVITY;
 	extern float SPEED_GRAVITY;
 	extern float SPEED_PLAYER;
+	extern float JUMP_FORCE;
 
 	extern float FPS;
 
