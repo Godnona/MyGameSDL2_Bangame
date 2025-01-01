@@ -71,8 +71,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>D:\User\CodeBasic\VanEngine\MyGameSDL2\MyGameSDL2\include;D:\User\CodeBasic\VanEngine\MyGameSDL2\LabGameLib;D:\User\CodeBasic\VanEngine\MyGameSDL2\LabGameLib\Lib\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\User\CodeBasic\VanEngine\MyGameSDL2\LabGameLib\Lib\Debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -109,13 +109,13 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>D:\User\CodeBasic\VanEngine\MyGameSDL2\MyGameSDL2\include;D:\User\CodeBasic\VanEngine\MyGameSDL2\LabGameLib\Lib\Include;D:\User\CodeBasic\VanEngine\MyGameSDL2\LabGameLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)LabGameLib;$(SolutionDir)MyGameSDL2\include;$(SolutionDir)LabGameLib\Lib\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>GameEngine.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>D:\User\CodeBasic\VanEngine\MyGameSDL2\LabGameLib\Lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)LabGameLib\Lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
