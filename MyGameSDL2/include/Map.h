@@ -9,11 +9,9 @@ namespace BanZ
 {
 	typedef struct {
 
-		// Left side 
 		int start_x;
 		int start_y;
 
-		// Right side
 		int end_x;
 		int end_y;
 
@@ -40,6 +38,9 @@ namespace BanZ
 		void InitTile(BanGame* banGame);
 		void Update(float deltaTime, BanGame* banGame);
 		void Render(BanGame* banGame);
+
+		void SetMapData(MapStruct& mapStruct);
+		MapStruct GetMapData();
 
 	private:
 

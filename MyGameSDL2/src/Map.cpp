@@ -84,7 +84,7 @@ void BanZ::Map::Render(BanGame* banGame)
 
 	// Get pos
 	x1 = (dataMap.start_x % BLOCK_SIZE) * -1;
-	x2 = x1 + WIDTH + BLOCK_SIZE;
+	x2 = x1 + WIDTH + (x1 == 0 ? 0 : BLOCK_SIZE);
 
 	y1 = (dataMap.start_y % BLOCK_SIZE) * -1;
 	y2 = y1 + HEIGHT + (y1 == 0 ? 0 : BLOCK_SIZE);
@@ -111,4 +111,14 @@ void BanZ::Map::Render(BanGame* banGame)
 		block_y++;
 	}
 
+}
+
+void BanZ::Map::SetMapData(MapStruct& mapStruct)
+{
+	this->dataMap = mapStruct;
+}
+
+MapStruct BanZ::Map::GetMapData()
+{
+	return dataMap;
 }

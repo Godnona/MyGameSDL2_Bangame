@@ -1,12 +1,15 @@
 #pragma once  
 #include "BanGame.h"  
 
-#include "iostream"  
-#include "cstring"  
+#include <iostream> 
+#include <string>
+#include <sstream>
 
 #include "Data.h"  
 #include "GameObject.h"  
-#include "Map.h"  
+#include "Map.h"
+#include "Player.h"
+#include "Timer.h"
 
 namespace BanZ {  
 	class GameManager {  
@@ -24,6 +27,11 @@ namespace BanZ {
 
 	private:  
 		GameObject* background;  
-		Map* map;  
+		Map* map;
+		MapStruct map_data;
+
+		Player* player;
+		Timer timer;
+		
 	};  
 }
