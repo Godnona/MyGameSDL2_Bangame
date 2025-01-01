@@ -11,6 +11,8 @@
 #include <fstream>
 #include <sstream>
 #include <cmath>
+#include <chrono>
+#include <thread>
 
 namespace BanZ
 {
@@ -49,6 +51,8 @@ namespace BanZ
 	extern float MAX_GRAVITY;
 	extern float SPEED_GRAVITY;
 	extern float SPEED_PLAYER;
+
+	extern float FPS;
 
 
 	// ============== Input ==============

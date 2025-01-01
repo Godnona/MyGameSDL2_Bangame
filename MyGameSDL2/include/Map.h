@@ -41,8 +41,8 @@ namespace BanZ
 		void Update(float deltaTime, BanGame* banGame);
 		void Render(BanGame* banGame);
 
-		void SetMap(MapStruct& mapStruct);
-		MapStruct GetMap();
+		void SetMapData(MapStruct& mapStruct);
+		MapStruct GetMapData();
 
 	private:
 

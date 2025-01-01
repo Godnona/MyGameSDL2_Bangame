@@ -24,6 +24,7 @@ public:
 	void Move(MapStruct& map);
 	void CheckCollider(MapStruct& map);
 	void MoveCamera(MapStruct& map);
+	void SetMapXY(const int map_x, const int map_y);
 
 	enum RunType
 	{
@@ -46,6 +47,8 @@ private:
 	bool isRight;
 
 	bool isGround;
+
+	int map_x, map_y;
 
 };
 

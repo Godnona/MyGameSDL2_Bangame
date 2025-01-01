@@ -9,6 +9,7 @@
 #include "GameObject.h"  
 #include "Map.h"
 #include "Player.h"
+#include "Timer.h"
 
 namespace BanZ {  
 	class GameManager {  
@@ -30,6 +31,7 @@ namespace BanZ {
 		MapStruct map_data;
 
 		Player* player;
+		Timer timer;
 		
 	};  
 }

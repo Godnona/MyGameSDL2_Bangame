@@ -31,20 +31,36 @@ void BanZ::GameManager::Render() const
 	// render background
 	background->RenderImg(banGame, { position.x / 2, position.y / 2 }, { WIDTH, HEIGHT });
 	
-	// render map
-	map->Render(banGame);
+	
 
 	// render player
 	player->Render(banGame);
+
+	// render map
+	map->Render(banGame);
 
 }
 
 void BanZ::GameManager::Update(float deltaTime, BanGame* banGame)
 {
+	timer.start();
 
 	player->HandleInput(banGame);
 
-	map_data = map->GetMap();
+	map_data = map->GetMapData();
+	player->SetMapXY(map_data.start_x, map_data.start_y);
 	player->Move(map_data);
 
+	map->SetMapData(map_data);
+
+
+	int realTime = timer.getTicks();
+	int timeOneFrame = 1000 / FPS; // ms
+
+	if (realTime < timeOneFrame)
+	{
+		int numDelay = timeOneFrame - realTime;
+		if(numDelay > 0)
+			std::this_thread::sleep_for(std::chrono::milliseconds(numDelay)); // ms
+	}
 }

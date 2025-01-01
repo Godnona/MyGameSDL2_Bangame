@@ -13,6 +13,8 @@ Player::Player()
 	status = 0;
 
 	isRight = true;
+
+	map_x = 0; map_y = 0;
 }
 
 Player::~Player()
@@ -58,8 +60,8 @@ void Player::Render(BanGame* banGame)
 
 	if (frame >= 8) frame = 0;
 
-	pos.x = x_pos;
-	pos.y = y_pos;
+	pos.x = x_pos - map_x;
+	pos.y = y_pos - map_y;
 
 	VECTOR3 positionGlobal = VECTOR3(pos.x, pos.y, 0.0f);
 	VECTOR2 sizeGlobal = VECTOR2(BLOCK_SIZE, BLOCK_SIZE);
@@ -84,6 +86,7 @@ void Player::Move(MapStruct& map)
 		x_speed += SPEED_PLAYER;
 
 	CheckCollider(map);
+	MoveCamera(map);
 
 }
 
@@ -161,6 +164,19 @@ void Player::CheckCollider(MapStruct& map)
 
 void Player::MoveCamera(MapStruct& map)
 {
+	map.start_x = x_pos - (WIDTH / 2); // Qua 1/2 map -> move map
+	if (map.start_x < 0) 
+		map.start_x = 0;
+	else if (map.start_x + WIDTH > map.end_x) 
+		map.start_x = map.end_x - WIDTH;
+
+	// Bug map y
+	//map.start_y = y_pos - (HEIGHT / 2);
+	//if (map.start_y < 0) 
+	//	map.start_y = 0;
+	//else if (map.start_y + HEIGHT > map.end_y) 
+	//	map.start_y = map.end_y - HEIGHT;
+	//
 }
 
 void Player::HandleInput(BanGame* banGame)
@@ -203,4 +219,11 @@ void Player::HandleInput(BanGame* banGame)
 		status = IDLE_LEFT;
 		input.idle = 1;
 	}
+}
+
+
+void Player::SetMapXY(const int map_x, const int map_y)
+{
+	this->map_x = map_x;
+	this->map_y = map_y;
 }
