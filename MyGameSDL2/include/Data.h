@@ -37,10 +37,26 @@ namespace BanZ
 	extern std::string PATH_MAP_FORMAT;
 	extern const char* PATH_MAP_IMG;
 
-	// player run left
-	extern std::vector<std::string> PATH_PLAYER_RUN_LEFT;
-	// player run right
-	extern std::vector<std::string> PATH_PLAYER_RUN_RIGHT;
+	extern std::string PATH_PLAYER_RUN_LEFT;
+	extern std::string PATH_PLAYER_RUN_RIGHT;
+	extern std::string PATH_PLAYER_IDLE_LEFT;
+	extern std::string PATH_PLAYER_IDLE_RIGHT;
+
+	// ============== PLAYER ==============
+	extern int WIDTH_FRAME;
+	extern int HEIGHT_FRAME;
+
+
+	// ============== Input ==============
+	typedef struct
+	{
+		int idle;
+		int left;
+		int right;
+		int up;
+		int down;
+		int jump;
+	} Input;
 }
 
 #endif // DATA_H

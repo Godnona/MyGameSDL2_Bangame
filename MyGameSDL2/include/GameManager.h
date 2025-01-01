@@ -7,7 +7,8 @@
 
 #include "Data.h"  
 #include "GameObject.h"  
-#include "Map.h"  
+#include "Map.h"
+#include "Player.h"
 
 namespace BanZ {  
 	class GameManager {  
@@ -27,10 +28,7 @@ namespace BanZ {
 		GameObject* background;  
 		Map* map;
 
-		pAnimation runLeftAnim;
-		pAnimation runRightAnim;
-
-		pAnimator manageAnim;
+		Player* player;
 		
 	};  
 }
